@@ -6,11 +6,11 @@ using namespace std;
 
 char numToChar(int index) {
 	char ascii[11] = {' ', '.', ':', '-', '=', '+', '*', '#', '%', '@', '@'};
-	float out = floor(((float)index / 255.0) * 10.0);
+	int out = floor(((float)index / 255.0) * 10.0);
 
 	//cout << out;
 
-	return ascii[(int) out];
+	return ascii[out];
 }
 
 int main() {
