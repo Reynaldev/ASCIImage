@@ -5,7 +5,7 @@ using namespace cv;
 using namespace std;
 
 char numToChar(int index) {
-	char ascii[11] = {' ', '.', ':', '- ', '=', '+', '*', '#', ' % ', '@', '@'};
+	char ascii[11] = {' ', '.', ':', '-', '=', '+', '*', '#', '%', '@', '@'};
 	float out = floor(((float)index / 255.0) * 10.0);
 
 	//cout << out;
@@ -25,7 +25,7 @@ int main() {
 	int resizeX = 8;		// Width resize value
 
 	// Read image
-	Mat srcImage = imread("C:/Users/Rey/Documents/My Coding/C++/ASCIImage/ASCIImage/Circle.jpg");
+	Mat srcImage = imread("C:/Users/Rey/Documents/My Coding/C++/ASCIImage/ASCIImage/Cat no bg.jpg");
 
 	// If no image was found, stop the program
 	if (srcImage.empty()) {
@@ -37,19 +37,13 @@ int main() {
 	string winName = "ASCIImage";
 
 	namedWindow(winName);
-	//imshow(winName, srcImage);
-	//cout << "Width: " << srcImage.size().width << endl;
-	//cout << "Height: " << srcImage.size().height << endl;
+	imshow(winName, srcImage);
 
 	// Crop image
 	Mat cropImage = srcImage(
 		Range(minCropY, srcImage.size().height - maxCropY), 
 		Range(minCropX, srcImage.size().width - maxCropX)
 	);
-
-	//imshow(winName, cropImage);
-	//cout << "Width: " << cropImage.size().width << endl;
-	//cout << "Height: " << cropImage.size().height << endl;
 
 	// Resize
 	Mat resizeImage; 
@@ -60,23 +54,22 @@ int main() {
 		INTER_LINEAR
 	);
 
-	imshow(winName, resizeImage);
-	//cout << "Width: " << resizeImage.size().width << endl;
-	//cout << "Height: " << resizeImage.size().height << endl;
+	cout << "Width: " << resizeImage.size().width << endl;
+	cout << "Height: " << resizeImage.size().height << endl;
 	
 	// Convert it to vector;
 	vector<uchar> output;
 	output.assign(resizeImage.data, resizeImage.data + resizeImage.total() * resizeImage.channels());
 
 	cout << system("cls");
+	cout << endl << endl;
 
 	// Print to console
-	//cout << resizeImage << endl;
-	cout << endl;
+	int widthSize = output.size() / resizeImage.size().width;
 	for (int i = 0; i < output.size(); i++) {
-		cout << numToChar(int(output[i]));
+		if (i % widthSize == 0) cout << endl;
 
-		if (i % 128 == 0) cout << "\n";
+		cout << numToChar(int(output[i]));
 	}
 
 	cout << endl;
