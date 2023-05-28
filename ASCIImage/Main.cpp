@@ -14,6 +14,7 @@ char numToChar(int index) {
 }
 
 int main() {
+	// Use power of 2 (2, 4, 8, 16, 32...) when cropping and resizing for better result
 	// Crop values
 	int minCropX = 24;		// Min width crop
 	int maxCropX = 30;		// Max Width crop
@@ -34,12 +35,13 @@ int main() {
 		return -1;
 	}
 
+	// Window
 	string winName = "ASCIImage";
 
 	namedWindow(winName);
 	imshow(winName, srcImage);
 
-	// Crop image
+	// Crop the image
 	Mat cropImage = srcImage(
 		Range(minCropY, srcImage.size().height - maxCropY), 
 		Range(minCropX, srcImage.size().width - maxCropX)
