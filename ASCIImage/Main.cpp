@@ -19,24 +19,24 @@ char numToChar(int index) {
 }
 
 int main() {
-	// Use power of 2 (2, 4, 8, 16, 32...) when cropping and resizing for better result
+	// Use power of 2 (2, 4, 8, 16, 32,...) when cropping and resizing for better result
 	// Crop values
-	int minCropX = 232;		// Min width crop
-	int maxCropX = 232;		// Max Width crop
-	int minCropY = 112;		// Min height crop
-	int maxCropY = 112;		// Max height crop
+	int minCropX = 27;				// Min width crop
+	int maxCropX = 27;				// Max Width crop
+	int minCropY = 105;				// Min height crop
+	int maxCropY = 104;				// Max height crop
 
 	// Resize values
-	int resizeY = 8;		// height resize value
-	int resizeX = 8;		// Width resize value
+	int resizeY = 8;				// height resize value
+	int resizeX = 8;				// Width resize value
 
 	// Config
-	Convert convert = Video;
-	string winName = "ASCIImage";
+	Convert convert = Image;		// Choose one between Image or Video
+	string winName = "ASCIImage";	// Window name
 
 	if (convert == Image) {
 		// Read image
-		Mat srcImage = imread( "C:/Users/Rey/Documents/My Coding/C++/ASCIImage/ASCIImage/Milos.jpg");
+		Mat srcImage = imread( "D:/Photo/Cat.jpg");
 
 		// If no image was found, stop the program
 		if (srcImage.empty()) {
@@ -87,7 +87,7 @@ int main() {
 	}
 	else if (convert == Video) {
 		// Get video
-		VideoCapture cap("C:/Users/Rey/Documents/My Coding/C++/ASCIImage/ASCIImage/Cat-Jump.mp4");
+		VideoCapture cap("D:/Videos/Milos-Dancing.mp4");
 
 		// Check
 		if (!cap.isOpened()) {
