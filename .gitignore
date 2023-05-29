@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ASCIImage/Cat.jpg
+/ASCIImage/Milos-Dancing.mp4
+/ASCIImage/Milos.jpg
+/ASCIImage/Circle.jpg
+/ASCIImage/Cat-Jump.mp4
